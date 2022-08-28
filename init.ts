@@ -7,9 +7,9 @@ const destination = join(routesDirectory, "sitemap.xml.ts");
 
 await ensureFile(destination);
 
-const stub = `import { Handlers } from "$fresh/server.ts";
+const stub = `import { Handlers } from "fresh/server.ts";
 import manifest from "../fresh.gen.ts";
-import { SitemapContext } from "https://github.com/oskoi/fresh-seo/mod.ts";
+import { SitemapContext } from "https://raw.githubusercontent.com/oskoi/fresh-seo/main/mod.ts";
 
 export const handler: Handlers = {
   GET(req, ctx) {
