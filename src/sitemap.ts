@@ -79,7 +79,7 @@ export class SitemapContext {
           <loc>${this.#url}${route}</loc>
           <lastmod>${day().format("YYYY-MM-DD")}</lastmod>
           <changefreq>daily</changefreq>
-          <priority>${weight}</priority>
+          <priority>${(weight as number).toFixed(1)}</priority>
         </url>`;
       })
         .join("\n")
