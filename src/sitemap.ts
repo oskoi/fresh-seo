@@ -44,7 +44,9 @@ export class SitemapContext {
             .replace("./routes", "")
             .replace("index", ""); // We remove index as it's consider a "/" in Fresh
 
-          return [npath, defaultWeight];
+          const weight = npath == "/" ? 1.0 : defaultWeight;
+
+          return [npath, weight];
         }),
 
       ...this.#additionalRoutes,
@@ -54,8 +56,11 @@ export class SitemapContext {
   async add(route: string, weight = defaultWeight) {
     try {
       for await (const item of Deno.readDir(route)) {
-        if (item.isFile) {
-          this.#additionalRoutes.set(item.name, weight);
+        if (item.isFile && !item.name.startsWith("_")) {
+          const npath = "/" + item.name
+            .replace(extname(item.name), "");
+
+          this.#additionalRoutes.set(npath, weight);
         }
       }
     } catch (_e: any) {
