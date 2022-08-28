@@ -3,8 +3,8 @@
 /// <reference lib="dom.asynciterable" />
 /// <reference lib="deno.ns" />
 /// <reference lib="deno.unstable" />
-import day from "dayjs";
-import { basename, extname } from "path";
+import day from "https://esm.sh/dayjs@1.11.3";
+import { basename, extname } from "https://deno.land/std@0.146.0/path/mod.ts";
 import { Manifest } from "fresh/server.ts";
 
 const defaultWeight = 0.8;
